@@ -60,7 +60,7 @@ pip install numpy matplotlib tqdm miepython
 
 ---
 
-## ▶Usage
+## Usage
 
 ### 1. Configure parameters
 In `SOS_Aer_main.py`, adjust:
