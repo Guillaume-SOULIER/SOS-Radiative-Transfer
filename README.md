@@ -70,6 +70,13 @@ In `SOS_Aer_main.py`, adjust:
   - Atmosphere (`atm_phase_fun`, associated parameters)
   - Aerosols (`aer_phase_fun`, associated parameters)
 
+In `SOS_Aer_tau_profile.py` and `SOS_Aer_graphe.py`, adjust:
+- **Name of figures and fodler path**
+- **Saving feature** `True` or `False`
+
+In `SOS_Aer_phase_func.py` and `SOS_Aer_graphe.py`, adjust:
+- **Name of saving files and fodler path**
+
 ### 2. Run the simulation
 ```bash
 python SOS_Aer_main.py
@@ -104,7 +111,7 @@ python SOS_Aer_main.py
 ---
 
 ## References
-- Van de Hulst, H.C. *Multiple Light Scattering*, Vol. 1 & 2.
-- Chandrasekhar, S. *Radiative Transfer*.
-- Lenoble, J. *Radiative Transfer in Scattering and Absorbing Atmospheres*.
+- M. Duan, Q. Min, 2004, *‘A semi-analytic technique to speed up successive order of scattering model for optically thick media’*, Journal of Quantitative Spectroscopy & Radiative Transfer Vol. 95, p. 21-32
+- Toohey, M. Stevens, B. Schmidt, Timmreck, 2016, *‘Easy Volcanic Aerosol (EVA v1.0): an idealized forcing generator for climate simulations’*, Geoscientific Model Development, No. 9, p. 4049-4070
+- Y. Li, J. Dykema, 2025, *‘Enhanced Radiative Cooling by Large Aerosol Particles from Pyrocumulonimbus’*, Article under review
 
