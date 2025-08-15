@@ -1,17 +1,16 @@
 # SOS-Radiative-Transfer
-Code developed in partnership with Harvard (with support from NASA) to simulate the path of light in the atmosphere with an aerosol layer (forest fires, volcanic eruptions) using the SOS method.
 
 ## Overview
-**SOS_AER** is a Python code that simulates radiative transfer in a plane-parallel atmosphere containing an aerosol layer, using the **Successive Orders of Scattering (SOS)** method.
+**SOS_AER** is a Python code that simulates radiative transfer in a plane-parallel atmosphere containing an aerosol layer, using the **Successive Orders of Scattering (SOS)** and the **Discrete Ordinate (DOM** methods.
 
 The atmosphere is modeled as a stack of discrete layers, with a mixture of molecules and aerosols whose optical properties and phase functions can vary.  
 The code computes:
-- Upward and downward radiance fields for each scattering order.
-- Integrated fluxes.
-- Mean diffusivity.
+- Upward and downward radiance fields for each scattering order and for the total series (computed for a default accuracy of 100 ppm).
+- Integrated fluxes (ascending, descending, net).
+- Mean diffusivity ($\bar{\mu}\rightarrow 1$: ascending vertical field, $\bar{\mu}\rightarrow -1$: descending vertical field, $\bar{\mu}\rightarrow 0$: horizontal field).
 - Radiative heating rate profiles.
 
-**Angles µ** follow the convention:
+**Angular convention** follow the convention:
 - `µ > 0`: upward directions (outgoing to space).
 - `µ < 0`: downward directions (toward the surface).
 
@@ -49,7 +48,6 @@ The code computes:
 | **SOS_Aer_fwc_data.py** | Tabulated data for the FWC phase function. |
 | **I1_In.py** | Functions to compute radiance fields: first order (`I1_NumInt`), higher orders (`Jn_NumInt`, `In_NumInt`), and µ → 0 approximations. |
 | **SOS_Aer_In_limit.py** | Improved asymptotic methods and stable interpolation for near-zero µ. |
-| **SOS_Aer_vdh_extract.py** | Utility functions for extracting subsets of angles and radiances in Van de Hulst format. |
 | **SOS_Aer_graphe.py** | Plotting functions for flux, diffusivity, and heating rate profiles. |
 
 ## Installation & Dependencies
