@@ -18,6 +18,9 @@ warnings.simplefilter('ignore', DeprecationWarning)
 # Main programm
 def SOS_Aer():
 
+    # Working folder to store results
+    working_folder = './SOS_AER'
+
 
     # Solar angular position (mu0=cos(theta_solar))
     mu0 = 0.5
@@ -338,10 +341,10 @@ def SOS_Aer():
     print('           Ploting graphes         ')
     print('=====================================')
 
-    # graphe_diffusivity(I, mu, z_profile, nb_layers)
-    graphe_flux(I, mu, z_profile, nb_layers, nb_angles)
-    graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles)
-    # graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles)
+    # graphe_diffusivity(I, mu, z_profile, nb_layers, working_folder)
+    graphe_flux(I, mu, z_profile, nb_layers, nb_angles, working_folder)
+    graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles, working_folder)
+    # graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles, working_folder)
 
 
 
