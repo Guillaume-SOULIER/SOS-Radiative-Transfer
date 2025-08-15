@@ -78,7 +78,7 @@ def SOS_Aer():
     r_m_atm = None
     sig_atm = None
 
-    P0_atm, P_atm = phase_func('atm', atm_phase_fun, g_atm, r_atm, lambda0_atm, indx_atm, nb_angles, mu, mu0, N0_atm, r_m_atm, sig_atm)
+    P0_atm, P_atm = phase_func('atm', atm_phase_fun, g_atm, r_atm, lambda0_atm, indx_atm, nb_angles, mu, mu0, N0_atm, r_m_atm, sig_atm, working_folder)
 
     
     # Defining aerosol layer phase function
@@ -95,7 +95,7 @@ def SOS_Aer():
     r_m_aer = 0.506 # log-normal distrib mode radius (in µm)
     sig_aer = 1.5 # log-normal distrib standard deviation
 
-    P0_aer, P_aer = phase_func('aer', aer_phase_fun, g_aer, r_aer, lambda0_aer, indx_aer, nb_angles, mu, mu0, N0_aer, r_m_aer, sig_aer)
+    P0_aer, P_aer = phase_func('aer', aer_phase_fun, g_aer, r_aer, lambda0_aer, indx_aer, nb_angles, mu, mu0, N0_aer, r_m_aer, sig_aer, working_folder)
     P_mix = (P_atm * dtau_atm + P_aer * dtau_aer) / (dtau_aer + dtau_atm) # Atm + Aer phase function as a ratio of optical depths
     P0_mix = (P0_atm * dtau_atm + P0_aer * dtau_aer) / (dtau_aer + dtau_atm) # Atm + Aer phase function as a ratio of optical depths
     P0_mix = P0_mix/np.trapz(P0_mix, mu) *2 # normalization
