@@ -9,7 +9,7 @@ from multiprocessing import Pool, cpu_count
 
 ## Computation of phase function
 
-def phase_func(mol, phase_fun, g, r, lambda0, indx, nb_angles, mu, mu0, N0, r_m, sig):
+def phase_func(mol, phase_fun, g, r, lambda0, indx, nb_angles, mu, mu0, N0, r_m, sig, working_folder):
 
     print(f"Computing {mol} phase function:")
 
@@ -44,7 +44,7 @@ def phase_func(mol, phase_fun, g, r, lambda0, indx, nb_angles, mu, mu0, N0, r_m,
         elif phase_fun == 'rayleigh':
             P0, P = rayleigh(nb_angles, mu, mu0)
         elif phase_fun == 'eva' or 'wildfire':
-            P0, P = log_normal_mie(nb_angles, mu, mu0, lambda0, indx, N0, r_m, sig, phase_fun)
+            P0, P = log_normal_mie(nb_angles, mu, mu0, lambda0, indx, N0, r_m, sig, phase_fun, working_folder)
         
         if mol == 'atm':
             save_atm_phase_functions(P, P0)
@@ -395,7 +395,7 @@ def mie(nb_angles, mu, mu0, indx, r, lambda0):
 
 
 
-def log_normal_mie(nb_angles, mu, mu0, wl, idx, N0, r_m, sig, phase_fun):
+def log_normal_mie(nb_angles, mu, mu0, wl, idx, N0, r_m, sig, phase_fun, working_folder):
 
     mu_neg = np.linspace(-1,0, nb_angles)
     mu_pos = np.linspace(0,1, nb_angles)
@@ -432,7 +432,7 @@ def log_normal_mie(nb_angles, mu, mu0, wl, idx, N0, r_m, sig, phase_fun):
     print('======================================================')
 
 
-    folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+    folder = working_folder
     os.makedirs(folder, exist_ok=True)
     if phase_fun == 'eva':
         filename = f'EVA_P0={mu0}.txt'
@@ -534,7 +534,7 @@ def log_normal_mie(nb_angles, mu, mu0, wl, idx, N0, r_m, sig, phase_fun):
     print("         Computing phase function P(µ, µ')")
     print('======================================================')
 
-    folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+    folder = working_folder
     os.makedirs(folder, exist_ok=True)
     if phase_fun == 'eva':
         filename = f'EVA_P.txt'
@@ -747,4 +747,5 @@ def compute_P_column(args):
     # This will be handled in the main loop after all columns are computed
     
     return n, P_col
+
 
