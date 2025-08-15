@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 
 # Secondary functions for graphe plots
-def graphe_diffusivity(I, mu, z_profile, nb_layers):
+def graphe_diffusivity(I, mu, z_profile, nb_layers, working_folder):
 
     dif = np.zeros(nb_layers)
     for i in range(nb_layers):
@@ -20,7 +20,7 @@ def graphe_diffusivity(I, mu, z_profile, nb_layers):
 
     save_fig = True
     if save_fig :
-        graphe_folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+        graphe_folder = working_folder
         os.makedirs(graphe_folder, exist_ok=True)
         filename_png = f'Diffusivity_profile_atm_mol_and_aer_volcanic.png'
         path = os.path.join(graphe_folder, filename_png)
@@ -34,7 +34,7 @@ def graphe_diffusivity(I, mu, z_profile, nb_layers):
 
 
 
-def graphe_flux(I, mu, z_profile, nb_layers, nb_angles):
+def graphe_flux(I, mu, z_profile, nb_layers, nb_angles, working_folder):
     
     flux = np.zeros(nb_layers)
     for i in range(nb_layers):
@@ -51,7 +51,7 @@ def graphe_flux(I, mu, z_profile, nb_layers, nb_angles):
 
     save_fig = True
     if save_fig :
-        graphe_folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+        graphe_folder = working_folder
         os.makedirs(graphe_folder, exist_ok=True)
         filename_png = f'Flux_profile_atm_mol_and_aer_volcanic.png'
         path = os.path.join(graphe_folder, filename_png)
@@ -65,7 +65,7 @@ def graphe_flux(I, mu, z_profile, nb_layers, nb_angles):
 
 
 
-def graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles):
+def graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles, working_folder):
     
     # Physical parameters
     rho = 1.225 # density (in m^-3)
@@ -98,7 +98,7 @@ def graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles):
 
     save_fig = False
     if save_fig :
-        graphe_folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+        graphe_folder = working_folder
         os.makedirs(graphe_folder, exist_ok=True)
         filename_png = f'Heating rate_profile_atm_mol_and_aer_volcanic.png'
         path = os.path.join(graphe_folder, filename_png)
@@ -110,7 +110,7 @@ def graphe_heating_rate(I, mu, z_profile, nb_layers, nb_angles):
     
 
 
-def graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles):
+def graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles, working_folder):
 
     I = np.zeros(nb_layers)
     max_order = len(I_saved)
@@ -135,7 +135,7 @@ def graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles):
 
     save_fig = True
     if save_fig :
-        graphe_folder = fr'D:\Polytechnique\4_3A\STAGE_3A\Harvard\SOS DYKEMA\Code perso\SOS_AER'
+        graphe_folder = working_folder
         os.makedirs(graphe_folder, exist_ok=True)
         filename_png = f'Diffusivity_profile_atm_mol_and_aer_volcanic_SOS.png'
         path = os.path.join(graphe_folder, filename_png)
@@ -144,4 +144,5 @@ def graphe_successive_dif(I_saved, mu, z_profile, nb_layers, nb_angles):
         plt.close()
 
     
+
     
