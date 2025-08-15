@@ -17,7 +17,7 @@ The code computes:
 ## Main Features
 - **Boundary conditions**:
   - Surface with *Lambertian* or *specular* reflectivity (user-defined albedo).
-  - Top of atmosphere: direct solar illumination with given solar zenith (`µ0`).
+  - Top of atmosphere (at $z_atm = 120 km$): direct solar illumination with given solar zenith (`µ0`).
 - **Supported phase functions**:
   - Isotropic
   - Henyey-Greenstein
@@ -79,20 +79,26 @@ python SOS_Aer_main.py
 - Console output: progress of scattering order computations.
 - Interactive plots: optical depth, flux, diffusivity, heating rate profiles.
 - PNG figure saving if enabled in `SOS_Aer_graphe.py`.
-- Phase functions stored as `.npy` and `.txt` for reuse.
+- Phase functions stored as `.npy` and `.txt` for faster reuse.
 
 ---
 
 ## Example scenario: Easy Volanic Aerosols (EVA) model
 - Pure molecular atmosphere + thin absorbing aerosol layer.
 - µ0 = 0.5 (~60° solar elevation).
-- Rayleigh phase function for molecules, log-normal Mie for aerosols.
+- Layer latitudes: $z_up = 25 km, z_down = 17 km$.
+- Rayleigh phase function for molecules ($\omega = 1, \tau_atm^*=0.124$).
+- Log-normal Mie for aerosols ($\sigma_v = 1.2, r_m = 0.506 µm, \lambda = 0.550 µm, \omega = 0.97, \tau_aer^* = 0.120, n=1.44$).
+- Surface reflectivity: $R_s = 0.15$.
 - Computation until convergence of `In/I` ratio (< 10⁻⁴ at surface and TOA).
 
-## Example scenario: Easy Volanic Aerosols (EVA) model
+## Example scenario: Wildfire model
 - Pure molecular atmosphere + thin absorbing aerosol layer.
 - µ0 = 0.5 (~60° solar elevation).
-- Rayleigh phase function for molecules, log-normal Mie for aerosols.
+- Layer latitudes: $z_up = 15 km, z_down = 14 km$.
+- Rayleigh phase function for molecules ($\omega = 1, \tau_atm^*=0.124$).
+- Log-normal Mie for aerosols ($\sigma_v = 1.5, r_m = 0.065 µm, N = 501,187 cm^-3, \lambda = 0.550 µm, \omega = 0.97, \tau_aer^* = 0.0075, n=1.7 + 0.03j$).
+- Surface reflectivity: $R_s = 0.15$.
 - Computation until convergence of `In/I` ratio (< 10⁻⁴ at surface and TOA).
 
 ---
