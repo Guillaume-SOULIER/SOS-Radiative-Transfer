@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import copy
 from tqdm import tqdm
 import warnings
-from I1_In import I1_NumInt, Jn_NumInt, In_NumInt, mu_approx_In
+from SOS_Aer_I1_In import I1_NumInt, Jn_NumInt, In_NumInt, mu_approx_In
 from SOS_Aer_global_va import MU_THRESHOLD, MU_EXTREME_THRESHOLD, MU_VERY_SMALL_THRESHOLD
 from SOS_Aer_vdh_extract import vdh, In_up_down
 from SOS_Aer_phase_func import phase_func
