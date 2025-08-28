@@ -302,7 +302,7 @@ $$
 **Aerosol layer** ($z_{up} \geq z \geq z_{down}$):  
 
 $$
-J_n(\tau,\mu) = \frac{d\tau_{\text{atm}}}{d\tau_{\text{atm}}+d\tau_{\text{aer}}}\,\frac{\omega_{\text{atm}}}{4}\int_{-1}^1 P_{\text{atm}}(\mu,\mu')\,I_{n-1}^{(\uparrow\downarrow)}(\tau,\mu')\,d\mu' + \frac{d\tau_{\text{aer}}}{d\tau_{\text{atm}}+d\tau_{\text{aer}}}\,\frac{\omega_{\text{aer}}}{4}\int_{-1}^1 P_{\text{aer}}(\mu,\mu')\,I_{n-1}^{(\uparrow\downarrow)}(\tau,\mu')\,d\mu'
+J_n(\tau,\mu) = \frac{d\tau_{\text{atm}}}{d\tau_{\text{atm}}+d\tau_{\text{aer}}}\frac{\omega_{\text{atm}}}{4}\int_{-1}^1 P_{\text{atm}}(\mu,\mu')I_{n-1}^{(\uparrow\downarrow)}(\tau,\mu')d\mu' + \frac{d\tau_{\text{aer}}}{d\tau_{\text{atm}}+d\tau_{\text{aer}}}\frac{\omega_{\text{aer}}}{4}\int_{-1}^1 P_{\text{aer}}(\mu,\mu')I_{n-1}^{(\uparrow\downarrow)}(\tau,\mu')d\mu'
 $$  
 
 ---
@@ -311,42 +311,42 @@ $$
 
 ### Downward field  
 
-**Upper atmospheric layer**:  
+**Upper atmospheric layer** ($z_{TOA} \geq z \geq z_{up}$):  
 
 $$
-I_n^{\downarrow}(\tau,\mu),\ \mu \le 0 = -\int_0^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\,\frac{dt}{\mu}
+I_n^{\downarrow}(\tau, \mu \le 0) = -\int_0^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\frac{dt}{\mu}
 $$  
 
-**Aerosol layer**:  
+**Aerosol layer** ($z_{up} \geq z \geq z_{down}$):  
 
 $$
-I_n^{\downarrow}(\tau,\mu),\ \mu \le 0 = I_n^{\downarrow}(\tau_{up},\mu)e^{\tfrac{\tau-\tau_{up}}{\mu}} - \int_{\tau_{up}}^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\,\frac{dt}{\mu}
+I_n^{\downarrow}(\tau, \mu \le 0) = I_n^{\downarrow}(\tau_{up},\mu)e^{\tfrac{\tau-\tau_{up}}{\mu}} - \int_{\tau_{up}}^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\frac{dt}{\mu}
 $$  
 
-**Bottom atmospheric layer**:  
+**Bottom atmospheric layer** ($z_{down} \geq z \geq 0$):  
 
 $$
-I_n^{\downarrow}(\tau,\mu),\ \mu \le 0 = I_n^{\downarrow}(\tau_{down},\mu)e^{\tfrac{\tau-\tau_{down}}{\mu}} - \int_{\tau_{down}}^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\,\frac{dt}{\mu}
+I_n^{\downarrow}(\tau, \mu \le 0) = I_n^{\downarrow}(\tau_{down},\mu)e^{\tfrac{\tau-\tau_{down}}{\mu}} - \int_{\tau_{down}}^{\tau} J_n(t,\mu)e^{\tfrac{\tau-t}{\mu}}\frac{dt}{\mu}
 $$  
 
 ### Upward field  
 
-**Bottom atmospheric layer**:  
+**Bottom atmospheric layer** ($z_{down} \geq z \geq 0$):  
 
 $$
-I_n^{\uparrow}(\tau,\mu),\ \mu \ge 0 = \rho_{\text{grd}}\,I_n^{\downarrow}(\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast},-\,\mu)\,e^{-\tfrac{\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast}-\tau}{\mu}} + \int_{\tau}^{\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\,\frac{dt}{\mu}
+I_n^{\uparrow}(\tau, \mu \ge 0) = \rho_{\text{grd}}I_n^{\downarrow}(\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast},-\,\mu)e^{-\tfrac{\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast}-\tau}{\mu}} + \int_{\tau}^{\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\frac{dt}{\mu}
 $$  
 
-**Aerosol layer**:  
+**Aerosol layer** ($z_{up} \geq z \geq z_{down}$):  
 
 $$
-I_n^{\uparrow}(\tau,\mu),\ \mu \ge 0 = I_n^{\uparrow}(\tau_{down},\mu)e^{-\tfrac{\tau_{down}-\tau}{\mu}} + \int_{\tau}^{\tau_{down}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\,\frac{dt}{\mu}
+I_n^{\uparrow}(\tau, \mu \ge 0) = I_n^{\uparrow}(\tau_{down},\mu)e^{-\tfrac{\tau_{down}-\tau}{\mu}} + \int_{\tau}^{\tau_{down}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\frac{dt}{\mu}
 $$  
 
-**Upper atmospheric layer**:  
+**Upper atmospheric layer** ($z_{TOA} \geq z \geq z_{up}$):  
 
 $$
-I_n^{\uparrow}(\tau,\mu),\ \mu \ge 0 = I_n^{\uparrow}(\tau_{up},\mu)e^{-\tfrac{\tau_{up}-\tau}{\mu}} + \int_{\tau}^{\tau_{up}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\,\frac{dt}{\mu}
+I_n^{\uparrow}(\tau, \mu \ge 0) = I_n^{\uparrow}(\tau_{up},\mu)e^{-\tfrac{\tau_{up}-\tau}{\mu}} + \int_{\tau}^{\tau_{up}} J_n(t,\mu)e^{-\tfrac{t-\tau}{\mu}}\frac{dt}{\mu}
 $$  
 
 ---
@@ -354,10 +354,10 @@ $$
 ## Total flux  
 
 $$
-F^{\uparrow}(\tau) = \sum_{k=1}^{\infty}\left[\int_0^1 I_k^{\uparrow}(\tau,\mu)\mu\,d\mu\right] + F_0 \rho_{\text{grd}} e^{-\tfrac{2(\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast})-\tau}{\mu_0}}
+F^{\uparrow}(\tau) = \sum_{k=1}^{\infty}\left[\int_0^1 I_k^{\uparrow}(\tau,\mu)\mu d\mu\right] + F_0 \rho_{\text{grd}} e^{-\tfrac{2(\tau_{\text{atm}}^{\ast}+\tau_{\text{aer}}^{\ast})-\tau}{\mu_0}}
 $$  
 
 $$
-F^{\downarrow}(\tau) = \sum_{k=1}^{\infty}\left[\int_{-1}^0 I_k^{\downarrow}(\tau,\mu)\mu\,d\mu\right] + F_0 e^{-\tfrac{\tau}{\mu_0}}
+F^{\downarrow}(\tau) = \sum_{k=1}^{\infty}\left[\int_{-1}^0 I_k^{\downarrow}(\tau,\mu)\mu d\mu\right] + F_0 e^{-\tfrac{\tau}{\mu_0}}
 $$  
 
