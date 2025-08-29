@@ -23,7 +23,7 @@ The code computes:
   - Rayleigh
   - Mie (monodisperse)
   - FWC (*Full Width Cloud* tabulated data)
-  - Log-normal Mie for specific clouds or aerosols (`eva`, `wildfire`, …)
+  - Stratocumulus II
 - **Numerical optimizations**:
   - Accurate handling of `µ → 0` limits (stable interpolation and asymptotic expansions).
   - Vectorized NumPy computations.
@@ -37,13 +37,18 @@ The code computes:
 
 | File | Role |
 |------|------|
-| **SOS_Aer_main_lambertian.py** | Main program with a lmabertian surface: sets parameters, calls computational routines, and generates outputs. |
-| **SOS_Aer_main_specular.py** | Main program with a specular surface: sets parameters, calls computational routines, and generates outputs. |
-| **SOS_Aer_tau_profile.py** | Builds the cumulative optical depth profile for the atmosphere and aerosol layer. |
-| **SOS_Aer_phase_func.py** | Computes phase functions according to the selected model (isotropic, HG, Mie, Rayleigh, FWC, log-normal). |
-| **SOS_Aer_global_va.py** | Global variables, thresholds for small-µ handling, storage/loading of phase functions. |
-| **SOS_Aer_fwc_data.py** | Tabulated data for the FWC phase function. |
+| **vdh_hg_comparison.py** | Main program that computes successive orders of scattering of the radiance field, displays the corresponding graphs, and compares them with Van de Hulst's results where applicable. |
 | **I1_In.py** | Functions to compute radiance fields: first order (`I1_NumInt`), higher orders (`Jn_NumInt`, `In_NumInt`), and µ → 0 approximations. |
+| **global_va.py** | Global variables, thresholds for small-µ handling, storage/loading of phase functions. |
+| **vdh_extract.py.py** | Returns the values of the fields associated with the viewing angles $µ=0, 0.1, 0.3, 0.5, 0.7, 0.9, 1$ and separates the upward and downward fields. |
+| **phase_fun.py** | Computes phase functions according to the selected model (isotropic, HG, Mie, Rayleigh, FWC, Stratocumulus II). |
+| **Error_test.py** | Returns the error (in %) associated with comparing the results with those of Van de Hulst (where applicable). |
+| **Graphe_N_max.py** | Computes and displays a graph showing the scattering order required to reconstruct the radiance series with an accuracy of 100 ppm. The results are stored in .txt files. |
+| **Strato_phase_fun.py** | Computes the Stratocumulus II phase function and saves it to a .txt file using multiprocessing. |
+| **vdh_HG.py** | Contains the values from Van de Hulst's data tables, used to compare results in vdh_hg_comparison.py in the case of the Henyey-Greenstein phase function. |
+| **vdh_iso.py** | Contains the values from Van de Hulst's data tables, used to compare results in vdh_hg_comparison.py in the case of an isotropic phase function. |
+
+
 | **SOS_Aer_In_limit.py** | Improved asymptotic methods and stable interpolation for near-zero µ. |
 | **SOS_Aer_graphe.py** | Plotting functions for flux, diffusivity, and heating rate profiles. |
 | **SOS_Aer_critical albedo.py** | Plotting Haywood critical albedo as a function of optical depth for several phase functions. |
@@ -77,7 +82,7 @@ In `SOS_Aer_phase_func.py` and `SOS_Aer_graphe.py`, adjust:
 
 ### 2. Run the simulation
 ```bash
-python SOS_Aer_main_*.py
+python *.py
 ```
 
 ### 3. Outputs
